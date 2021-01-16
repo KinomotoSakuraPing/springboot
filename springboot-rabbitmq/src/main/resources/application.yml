@@ -1,0 +1,16 @@
+spring:
+  rabbitmq:
+    host: *
+    port: *
+    username: *
+    password: *
+    virtual-host: *
+    listener:
+      simple:
+        acknowledge-mode: manual
+        publisher-confirm-type: simple
+        publisher-returns: true
+
+    redis:
+      host: *
+      port: *
