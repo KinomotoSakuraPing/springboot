@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf的入门</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!--输出hello数据-->
+<p th:text="${hello}"></p>
+<table>
+    <tr>
+        <td>下标</td>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>住址</td>
+    </tr>
+    <tr th:each="user,userStat:${users}">
+        <td>
+            下标:<span th:text="${userStat.index}"></span>,
+        </td>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.address}"></td>
+    </tr>
+
+    <div th:each="map,mapStat:${dataMap}">
+        <h1>Map输出</h1><br>
+        <div th:text="${map}"></div>
+        key:<span th:text="${mapStat.current.key}"></span><br/>
+        value:<span th:text="${mapStat.current.value}"></span><br/>
+        ==============================================
+    </div>
+
+    <div th:each="nm,nmStat:${names}">
+        <h1>数组输出</h1><br>
+        <span th:text="${nmStat.count}"></span><span th:text="${nm}"></span>
+        ==============================================
+    </div>
+
+    <div>
+        <h1>日期</h1><br>
+        <span th:text="${#dates.format(now,'yyyy-MM-dd hh:ss:mm')}"></span>
+    </div>
+    <div>
+        <span th:if="${(age>=18)}">终于长大了！</span>
+    </div>
+
+
+</table>
+<button onclick="aa()"></button>
+</body>
+<script th:inline="javascript">
+    var hh=[[${hello}]]
+    function aa() {
+        alert(hh)
+    }
+</script>
+</html>
